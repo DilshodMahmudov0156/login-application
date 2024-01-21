@@ -4,12 +4,13 @@
     background: linear-gradient(35deg, #5ed1dc, #e839f5);
     overflow: auto;
 }
-.login-parent{
+.login-parent {
     background-color: #ffffff;
     padding: 35px 30px;
     border-radius: 15px;
     margin-top: 100px;
- }
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.53);
+}
 input{
     display: block;
     width: 100%;

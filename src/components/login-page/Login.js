@@ -1,6 +1,16 @@
 import './style.css';
+import {signInWithPopup} from "firebase/auth";
+import {auth, provider} from "../../firebaseConfig";
 
 function Login() {
+
+    const loginPopup = (e) => {
+        e.preventDefault();
+        signInWithPopup(auth, provider).then((data) => {
+            console.log(data.user);
+        })
+
+    }
     return (
         <div className="login-panel">
             <div className="container">
@@ -11,7 +21,7 @@ function Login() {
                             <input type="email" placeholder="Enter_your_email_@..."/>
                             <input type="password" placeholder="Enter_your_password****"/>
                             <button className="enter-btn">Enter <i className="bi bi-hand-index-thumb"></i></button>
-                            <button className="enter-btn-2">LogIn with <i className="bi bi-google"></i></button>
+                            <button className="enter-btn-2" onClick={(e) => {loginPopup(e)}}>LogIn with <i className="bi bi-google"></i></button>
                         </form>
                     </div>
                 </div>

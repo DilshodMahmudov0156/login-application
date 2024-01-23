@@ -38,7 +38,7 @@ function Login() {
                 const user = userCredential.user;
                 console.log(user)
             }).catch((error) => {
-                console.log(error.message);
+                alert(error.message);
             })
         }
 
@@ -48,6 +48,8 @@ function Login() {
         e.preventDefault();
         signInWithPopup(auth, provider).then((data) => {
             console.log(data.user);
+        }).catch((error) => {
+            alert(error);
         })
 
     };

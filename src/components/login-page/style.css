@@ -46,12 +46,12 @@ input:focus{
     height: auto;
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.45);
     border-radius: 23px;
-    padding: 3px;
+    padding: 2px;
 }
 .changer-btns button{
     width: 100%;
     height: 35px;
-    margin: 3px;
+    margin: 2px;
     border-radius: 20px;
     border: none;
     display: block;
@@ -63,7 +63,7 @@ input:focus{
 .changer-btns button:hover{
     width: 100%;
     height: 35px;
-    margin: 3px;
+    margin: 2px;
     border-radius: 20px;
     border: none;
     display: block;
@@ -75,11 +75,11 @@ input:focus{
 .changer-btns button.active{
     width: 100%;
     height: 35px;
-    margin: 3px;
+    margin: 2px;
     border-radius: 20px;
     border: none;
     display: block;
     border: 1px solid #5ed1dc;
-    background: #5ea5dc;
+    background: #5edccd;
     color: #ffffff;
 }

@@ -74,9 +74,6 @@ function Login() {
                             <input type="password" placeholder="Enter_your_email_password****" onChange={(e) => {getPassVal(e)}}/>
                             <button className="enter-btn">Enter <i className="bi bi-hand-index-thumb"></i></button>
                             <button className="enter-btn-2" onClick={(e) => {loginPopup(e)}}>SignIn with <i className="bi bi-google"></i></button>
-                            <Link className="text-center d-block my-2" to="/profile">
-                                to profile
-                            </Link>
                         </form>
                     </div>
                 </div>

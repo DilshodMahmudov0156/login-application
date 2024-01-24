@@ -1,13 +1,16 @@
 import './style.css';
 import {signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import {auth, provider} from "../../firebaseConfig";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {useNavigate, Link} from "react-router-dom";
 
 function Login() {
 
     const [inUp, setInUp] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const token = localStorage.getItem('userId');
+    const navigate = useNavigate();
 
     const handleChangeFirst = () => {
         setInUp(true);
@@ -28,15 +31,16 @@ function Login() {
         if (inUp){
             signInWithEmailAndPassword(auth, email, password)
                 .then((data) => {
-                    console.log(data.user)
+                    localStorage.setItem('userId', data.user.uid);
+                    console.log(data.user);
                 })
                 .catch((error) => {
                     console.log(error.message);
                 })
         }else {
-            createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user)
+            createUserWithEmailAndPassword(auth, email, password).then((data) => {
+                localStorage.setItem('userId', data.user.uid);
+                console.log(data.user);
             }).catch((error) => {
                 alert(error.message);
             })
@@ -48,6 +52,8 @@ function Login() {
         e.preventDefault();
         signInWithPopup(auth, provider).then((data) => {
             console.log(data.user);
+            localStorage.setItem('userId', data.user.uid);
+            navigate('/profile');
         }).catch((error) => {
             alert(error);
         })
@@ -68,6 +74,9 @@ function Login() {
                             <input type="password" placeholder="Enter_your_email_password****" onChange={(e) => {getPassVal(e)}}/>
                             <button className="enter-btn">Enter <i className="bi bi-hand-index-thumb"></i></button>
                             <button className="enter-btn-2" onClick={(e) => {loginPopup(e)}}>SignIn with <i className="bi bi-google"></i></button>
+                            <Link className="text-center d-block my-2" to="/profile">
+                                to profile
+                            </Link>
                         </form>
                     </div>
                 </div>

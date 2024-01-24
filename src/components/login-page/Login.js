@@ -76,6 +76,7 @@ function Login() {
                             <button className="enter-btn-2" onClick={(e) => {loginPopup(e)}}>SignIn with <i className="bi bi-google"></i></button>
                             <Link className="text-center d-block my-2" to="/profile">
                                 to profile
+                                <i className="bi bi-person-circle"></i>
                             </Link>
                         </form>
                     </div>

@@ -1,15 +1,14 @@
 import './style.css';
-import {signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import {signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential} from "firebase/auth";
 import {auth, provider} from "../../firebaseConfig";
-import {useEffect, useState} from "react";
-import {useNavigate, Link} from "react-router-dom";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
 
     const [inUp, setInUp] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const token = localStorage.getItem('userId');
     const navigate = useNavigate();
 
     const handleChangeFirst = () => {
@@ -33,14 +32,16 @@ function Login() {
                 .then((data) => {
                     localStorage.setItem('userId', data.user.uid);
                     console.log(data.user);
+                    navigate("/profile");
                 })
                 .catch((error) => {
-                    console.log(error.message);
+                    alert(error.message);
                 })
         }else {
             createUserWithEmailAndPassword(auth, email, password).then((data) => {
                 localStorage.setItem('userId', data.user.uid);
                 console.log(data.user);
+                navigate("/profile");
             }).catch((error) => {
                 alert(error.message);
             })
@@ -53,7 +54,7 @@ function Login() {
         signInWithPopup(auth, provider).then((data) => {
             console.log(data.user);
             localStorage.setItem('userId', data.user.uid);
-            navigate('/profile');
+            navigate("/profile");
         }).catch((error) => {
             alert(error);
         })

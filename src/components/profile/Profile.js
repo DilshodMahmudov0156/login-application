@@ -1,4 +1,5 @@
-import React from 'react';
+import "./profile.css";
+import RightSide from "../administration/rightSide";
 
 function Profile({}) {
 
@@ -7,7 +8,8 @@ function Profile({}) {
         window.location.reload();
     }
     return (
-        <div>
+        <div className="profile-box">
+            <RightSide/>
         </div>
     );
 }

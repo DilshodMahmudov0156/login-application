@@ -1,5 +1,4 @@
 import React from 'react';
-import "./body.css";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import ProtectedRoute from "../protected-route/protectedRoute";
 import Profile from "../profile/Profile";

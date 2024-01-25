@@ -1,4 +1,3 @@
-import "./rightSide.css";
 
 function RightSide({}) {
     return (

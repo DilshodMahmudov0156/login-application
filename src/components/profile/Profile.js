@@ -1,5 +1,4 @@
-import "./profile.css";
-import RightSide from "../administration/rightSide";
+import RightSide from "../right-side/rightSide";
 
 function Profile({}) {
 
@@ -10,6 +9,7 @@ function Profile({}) {
     return (
         <div className="profile-box">
             <RightSide/>
+
         </div>
     );
 }

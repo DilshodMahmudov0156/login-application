@@ -1,5 +1,5 @@
 import './style.css';
-import {signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential} from "firebase/auth";
+import {signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {auth, provider} from "../../firebaseConfig";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";

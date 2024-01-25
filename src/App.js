@@ -12,7 +12,7 @@ function App() {
                 <Route element={<ProtectedRoute/>}>
                     <Route path="/profile" element={<Profile/>}/>
                 </Route>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/" element={<Login/>}/>
             </Routes>
         </Router>
     </div>

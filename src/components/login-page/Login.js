@@ -1,6 +1,6 @@
 import './style.css';
 import {signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import {auth, provider} from "../../firebaseConfig";
+import {auth, provider} from "../../fierbase/firebaseConfig";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -13,10 +13,10 @@ function Login() {
 
     const handleChangeFirst = () => {
         setInUp(true);
-    }
+    };
     const handleChangeSecond = () => {
         setInUp(false);
-    }
+    };
 
     const getEmVal = (e) => {
         setEmail(e.target.value);

@@ -1,5 +1,5 @@
-import RightSide from "../right-side/rightSide";
-import ProfileBody from "../profile-body/ProfileBody";
+import RightSide from "./rightSide";
+import ProfileBody from "./ProfileBody";
 
 function Profile({}) {
 

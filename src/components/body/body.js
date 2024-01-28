@@ -9,7 +9,7 @@ function Body({}) {
     const { state, dispatch } = useContext(Context);
 
     return (
-        <div className="my-body-tag">
+        <div className="my-body-tag bg-light">
             <Router>
                 <Routes>
                     <Route element={<ProtectedRoute/>}>

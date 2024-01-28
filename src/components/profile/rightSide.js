@@ -9,6 +9,11 @@ function RightSide({}) {
 
     return (
         <div className="right-side">
+            <div className="profile-circle">
+                <img src="" alt=""/>
+            </div>
+
+
         </div>
     );
 }

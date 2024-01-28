@@ -2,8 +2,8 @@ import {createContext, useReducer} from "react";
 
 const initialValue = {
     data: [],
-    term: '',
-    filter: ''
+    emailName: '',
+    emailPassword: ''
 };
 
 export const Context = createContext();

@@ -14,7 +14,7 @@ function RightSide({}) {
                 <img src="" alt=""/>
             </div>
             <button className="profile-image-editor">
-                <i className="bi bi-image"></i> <i className="bi bi-arrow-left-right"></i> <i className="bi bi-image"></i>
+                Change <i className="bi bi-image"></i>
             </button>
 
 

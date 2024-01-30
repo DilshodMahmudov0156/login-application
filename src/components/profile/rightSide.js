@@ -1,7 +1,7 @@
 import React from "react";
-import { db } from "../../fierbase/firebaseConfig";
 import { v4 as uuidv4} from "uuid";
-import { set, ref } from "firebase/database";
+import { imageDb } from "../../fierbase/firebaseConfig";
+import { ref, getDownloadURL, listAll, uploadBytes } from "firebase/storage";
 
 
 function RightSide() {
@@ -9,16 +9,7 @@ function RightSide() {
 
     const putImage = () => {
 
-        set(ref(db, `/${uuidv4()}`), {
-            id: uuidv4(),
-            url: ''
-        })
-            .then((data) => {
-            console.log()
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+
 
     }
 

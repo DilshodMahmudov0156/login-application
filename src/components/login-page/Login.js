@@ -31,6 +31,7 @@ function Login() {
             signInWithEmailAndPassword(auth, email, password)
                 .then((data) => {
                     localStorage.setItem('userId', data.user.uid);
+                    localStorage.setItem('imgUrl', data.user.photoURL);
                     console.log(data.user);
                     navigate("/profile");
                 })
@@ -40,6 +41,7 @@ function Login() {
         }else {
             createUserWithEmailAndPassword(auth, email, password).then((data) => {
                 localStorage.setItem('userId', data.user.uid);
+                localStorage.setItem('imgUrl', data.user.photoURL);
                 console.log(data.user);
                 navigate("/profile");
             }).catch((error) => {
@@ -54,6 +56,7 @@ function Login() {
         signInWithPopup(auth, provider).then((data) => {
             console.log(data.user);
             localStorage.setItem('userId', data.user.uid);
+            localStorage.setItem('imgUrl', data.user.photoURL);
             navigate("/profile");
         }).catch((error) => {
             alert(error);

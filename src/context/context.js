@@ -14,18 +14,13 @@ export const Context = createContext();
 const reducer  = (state = initialValue, action) => {
     const {type, payload} = action;
     switch (type) {
-        case 'ON_LOGGER':
+        case 'ON_Something':
             // write some function !
             break;
         case 'PUT_PHOTO_TO_PROFILE':
-            set(ref(db, `/${uuidv4()}`),
-                payload
-                // {
-                //     id: payload.id,
-                //     url: payload.url,
-                //     name: payload.name
-                // }
-                )
+            return (
+                set(ref(db, `/${uuidv4()}`), {id: payload.id, url: payload.url, name: payload.name})
+            )
             break;
         default:
             return { state }

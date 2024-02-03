@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useReducer, useState} from "react";
 import { v4 as uuidv4} from "uuid";
 import {db, imageDb} from "../../fierbase/firebaseConfig";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
@@ -10,41 +10,23 @@ import {Context} from "../../context/context";
 function RightSide() {
 
     const { state, dispatch } = useContext(Context);
-
     const [ img, setImg ] = useState('');
     const [ dis, setDis ] = useState(false);
     const [ profilePhoto, setProfilePhoto ] = useState('');
-    const [ myData, setMyData ] = useState([]);
 
     useEffect(() => {
-        setProfilePhoto(localStorage.getItem('imgUrl'));
-    }, [profilePhoto]);
+        const stopper = () => {
+            setProfilePhoto(localStorage.getItem('imgUrl'));
+            console.log(profilePhoto);
+        };
 
-    useEffect(() => {
-        onValue(refDb(db), (snapshot) => {
-            const data = snapshot.val();
-            if (data !== null) {
-                Object.values(data).map((item) => {
-                    setMyData((oldData) => [...oldData, item])
-                })
-
-
-            }
-        })
-
-
+        return () => {
+            stopper();
+        }
     }, []);
-
-    console.log(myData)
 
 
     const putImage = () => {
-
-        // set(ref(db, `/${uuidv4()}`), {
-        //     id: "sfgsfgsd",
-        //     url: "gfgsfgsdgd",
-        //     name: "gfdgsgf"
-        // });
 
         setDis(true);
         if(img){
@@ -67,7 +49,7 @@ function RightSide() {
 
 
     const analyze = () => {
-        console.log(profilePhoto);
+        console.log("idi naxoy");
     }
 
 

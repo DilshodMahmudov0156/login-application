@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import { v4 as uuidv4} from "uuid";
 import {db, imageDb} from "../../fierbase/firebaseConfig";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { ref as refDb, set } from "firebase/database";
+import { ref as refDb, set, onValue } from "firebase/database";
 import {Context} from "../../context/context";
 
 
@@ -14,10 +14,24 @@ function RightSide() {
     const [ img, setImg ] = useState('');
     const [ dis, setDis ] = useState(false);
     const [ profilePhoto, setProfilePhoto ] = useState('');
+    const [ myData, setMyData ] = useState([]);
 
     useEffect(() => {
         setProfilePhoto(localStorage.getItem('imgUrl'));
     }, [profilePhoto]);
+
+    useEffect(() => {
+        onValue(ref(db), (snapshot) => {
+            const data = snapshot.val();
+            if (data !== null) {
+                // Object.values(data).map((item) => {
+                //     setMyData((oldData) => [...oldData, item])
+                // })
+                console.log(data);
+
+            }
+        })
+    })
 
 
 
@@ -48,6 +62,8 @@ function RightSide() {
             });
         }
     };
+
+
 
     const analyze = () => {
         console.log(profilePhoto);

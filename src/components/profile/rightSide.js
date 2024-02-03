@@ -21,20 +21,21 @@ function RightSide() {
     }, [profilePhoto]);
 
     useEffect(() => {
-        onValue(ref(db), (snapshot) => {
+        onValue(refDb(db), (snapshot) => {
             const data = snapshot.val();
             if (data !== null) {
-                // Object.values(data).map((item) => {
-                //     setMyData((oldData) => [...oldData, item])
-                // })
-                console.log(data);
+                Object.values(data).map((item) => {
+                    setMyData((oldData) => [...oldData, item])
+                })
+
 
             }
         })
-    })
 
 
+    }, []);
 
+    console.log(myData)
 
 
     const putImage = () => {

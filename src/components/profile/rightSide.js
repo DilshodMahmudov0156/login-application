@@ -10,20 +10,25 @@ import {Context} from "../../context/context";
 function RightSide() {
 
     const { state, dispatch } = useContext(Context);
+    const [ myData, setMyData ] = useState([])
     const [ img, setImg ] = useState('');
     const [ dis, setDis ] = useState(false);
     const [ profilePhoto, setProfilePhoto ] = useState('');
 
     useEffect(() => {
-        const stopper = () => {
-            setProfilePhoto(localStorage.getItem('imgUrl'));
-            console.log(profilePhoto);
-        };
+        // setProfilePhoto(localStorage.getItem('imgUrl'));
+        // console.log(profilePhoto);
 
-        return () => {
-            stopper();
-        }
+            onValue(refDb(db), snapshot => {
+                setMyData([]);
+                const data = snapshot.val();
+
+                Object.values(data).map((item) => {
+                    setMyData((old) => [...old, item]);
+                })
+            });
     }, []);
+    console.log(myData);
 
 
     const putImage = () => {
@@ -49,7 +54,7 @@ function RightSide() {
 
 
     const analyze = () => {
-        console.log("idi naxoy");
+        console.log(profilePhoto);
     }
 
 
@@ -72,6 +77,15 @@ function RightSide() {
                 Sign Out
             </button>
             <div className="btn btn btn-primary" onClick={analyze}>click on it</div>
+
+            {
+                myData.map(item => (
+                    <div>
+                        <p>{item.name}</p>
+                        <img src={item.url} alt="" className="w-50"/>
+                    </div>
+                ))
+            }
 
 
         </div>

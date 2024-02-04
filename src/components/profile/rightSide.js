@@ -22,10 +22,11 @@ function RightSide() {
             onValue(refDb(db), snapshot => {
                 setMyData([]);
                 const data = snapshot.val();
-
-                Object.values(data).map((item) => {
-                    setMyData((old) => [...old, item]);
-                })
+                if (data){
+                    Object.values(data).map((item) => {
+                        setMyData((old) => [...old, item]);
+                    })
+                }
             });
     }, []);
     console.log(myData);
@@ -43,6 +44,7 @@ function RightSide() {
                 getDownloadURL(value.ref).then(url=>{
                     set(refDb(db, `/${uuidv4()}`), {
                         id: imgName,
+                        user: localStorage.getItem('userId'),
                         url: url,
                         name: imgName
                     });

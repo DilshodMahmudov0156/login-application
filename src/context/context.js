@@ -1,30 +1,29 @@
-import { createContext, useReducer } from "react";
-import { set, ref } from "firebase/database";
-import { db } from "../fierbase/firebaseConfig";
-import { v4 as uuidv4 } from "uuid";
+import {createContext, useReducer} from "react";
 
 const initialValue = {
     data: [],
     myData: [],
-    emailName: '',
-    emailPassword: ''
+    profile:{
+        img: '',
+        description: '',
+        userEmail: ''
+    },
+    emailValue: '',
+    emailPasswordValue: ''
 };
+
 
 export const Context = createContext();
 
 const reducer  = (state = initialValue, action) => {
     const {type, payload} = action;
     switch (type) {
-        case 'SET_ALL_DATA':
-            return { ...state, data: payload}
-            break;
+        case "SET_DATA":
+            return { ...state, data: payload};
         case 'PUT_PHOTO_TO_PROFILE':
-            return (
-                set(ref(db, `/${uuidv4()}`), {id: payload.id, url: payload.url, name: payload.name})
-            )
-            break;
+            // return state;
         default:
-            return { state }
+            // return { state }
     }
 };
 

@@ -10,7 +10,8 @@ import {Context} from "../../context/context";
 function RightSide() {
 
     const { state, dispatch } = useContext(Context);
-    const [ myData, setMyData ] = useState([])
+    const [ allData, setAllData ] = useState([]);
+    const [ myData, setMyData ] = useState([]);
     const [ img, setImg ] = useState('');
     const [ dis, setDis ] = useState(false);
     const [ profilePhoto, setProfilePhoto ] = useState('');
@@ -20,15 +21,23 @@ function RightSide() {
         // console.log(profilePhoto);
 
             onValue(refDb(db), snapshot => {
-                setMyData([]);
+                setAllData([]);
                 const data = snapshot.val();
                 if (data){
                     Object.values(data).map((item) => {
-                        setMyData((old) => [...old, item]);
+                        setAllData((old) => [...old, item]);
                     })
                 }
             });
+
     }, []);
+
+    useEffect(() => {
+
+        const filtered = allData.filter(element => element.user == localStorage.getItem('userId'));
+        // setMyData(filtered);
+
+    },[])
 
 
     const putImage = () => {
@@ -48,7 +57,7 @@ function RightSide() {
                         url: url,
                         name: imgName
                     });
-                })
+                });
             });
         }
     };
@@ -81,7 +90,8 @@ function RightSide() {
             <div className="btn btn btn-primary" onClick={analyze}>click on it</div>
 
             {
-                myData.map(item => (
+                allData.filter(item => item.user == localStorage.getItem('userId'))
+                .map(item => (
                     <div>
                         <p>{item.name}</p>
                         <img src={item.url} alt="" className="w-50"/>

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useReducer, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { v4 as uuidv4} from "uuid";
 import {db, imageDb} from "../../fierbase/firebaseConfig";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
@@ -16,7 +16,7 @@ function RightSide() {
     const [ profilePhoto, setProfilePhoto ] = useState('');
 
     useEffect(() => {
-        // setProfilePhoto(localStorage.getItem('imgUrl'));
+        setProfilePhoto(localStorage.getItem('imgUrl'));
         // console.log(profilePhoto);
 
             onValue(refDb(db), snapshot => {
@@ -29,7 +29,6 @@ function RightSide() {
                 }
             });
     }, []);
-    console.log(myData);
 
 
     const putImage = () => {
@@ -45,6 +44,7 @@ function RightSide() {
                     set(refDb(db, `/${uuidv4()}`), {
                         id: imgName,
                         user: localStorage.getItem('userId'),
+                        for: 'profile-photo',
                         url: url,
                         name: imgName
                     });
@@ -56,7 +56,7 @@ function RightSide() {
 
 
     const analyze = () => {
-        console.log(profilePhoto);
+        console.log(state);
     }
 
 

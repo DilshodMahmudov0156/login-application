@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const initialValue = {
     data: [],
+    myData: [],
     emailName: '',
     emailPassword: ''
 };
@@ -14,8 +15,8 @@ export const Context = createContext();
 const reducer  = (state = initialValue, action) => {
     const {type, payload} = action;
     switch (type) {
-        case 'ON_Something':
-            // write some function !
+        case 'SET_ALL_DATA':
+            return { ...state, data: payload}
             break;
         case 'PUT_PHOTO_TO_PROFILE':
             return (
